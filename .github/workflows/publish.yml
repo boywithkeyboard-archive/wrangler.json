@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 18.x
+          node-version: 16.x
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
@@ -34,13 +34,11 @@ jobs:
           echo "CHANGELOG<<EOF" >> $GITHUB_ENV
           echo "$CHANGELOG" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
+
       - name: Publish Package
-        uses: actions/github-script@v6
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        with:
-          script: |
-            await exec.exec('npm publish')
+        run: npm publish
       
       - name: Publish Release
         uses: actions/github-script@v6
@@ -53,5 +51,5 @@ jobs:
               name: process.env.VERSION,
               body: process.env.CHANGELOG,
               draft: false,
-              prerelease
+              prerelease: false
             })
