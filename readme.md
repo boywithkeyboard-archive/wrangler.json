@@ -8,7 +8,7 @@
 ## Installation
 
 ```bash
-npm i -D wjson
+npm i -D @darkflare/wjson
 ```
 
 ## Usage (CLI)
