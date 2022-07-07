@@ -1,5 +1,5 @@
 <div align='center'>
-<h1>wrangler.json</h1>
+<h1>wjson</h1>
 <b>✨ Configure Wrangler in the format of your choice. ✨</b>
 </br>
 </br>
@@ -8,12 +8,12 @@
 ## Installation
 
 ```bash
-npm i -D wrangler.json
+npm i -D wjson
 ```
 
 ## Usage (CLI)
 
-Run the below command and **wrangler.json** will automatically search for your configuration file and generate a `wrangler.toml` for you.
+Run the below command and **wjson** will automatically search for your configuration file and generate a `wrangler.toml` for you.
 
 ```bash
 wjson
@@ -35,7 +35,7 @@ wjson
 
 ```javascript
 import { join } from 'node:path'
-import { generateConfig, parseConfig } from 'wrangler.json'
+import { generateConfig, parseConfig } from 'wjson'
 
 // get the config from a file
 const config = await parseConfig(join(someDirectory, './custom.json'))
@@ -53,7 +53,7 @@ await generateConfig(config)
 
 ```jsonc
 {
-  "$schema": "https://raw.githubusercontent.com/azurydev/wrangler.json/dev/schema.json",
+  "$schema": "https://raw.githubusercontent.com/azurydev/wjson/dev/schema.json",
   // your config (w/ autocomplete)
 }
 ```
@@ -61,7 +61,7 @@ await generateConfig(config)
 `js/mjs/ts`
 
 ```javascript
-import { defineConfig } from 'wrangler.json'
+import { defineConfig } from 'wjson'
 
 export default defineConfig({
  // your config (w/ autocomplete)
@@ -71,7 +71,7 @@ export default defineConfig({
 `js/cjs`
 
 ```javascript
-const { defineConfig } = require('wrangler.json')
+const { defineConfig } = require('wjson')
 
 module.exports = defineConfig({
  // your config (w/ autocomplete)

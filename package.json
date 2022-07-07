@@ -1,5 +1,5 @@
 {
-  "name": "wrangler.json",
+  "name": "wjson",
   "version": "0.1.1",
   "description": "Configure Wrangler in the format of your choice.",
   "bin": {
@@ -22,10 +22,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/azurydev/wrangler.json.git"
+    "url": "git+https://github.com/azurydev/wjson.git"
   },
   "keywords": [
     "wrangler.json",
+    "wjson",
     "cloudflare",
     "workers",
     "wrangler"
@@ -33,13 +34,14 @@
   "author": "Samuel Kopp <opensource@azury.dev> (https://azury.dev)",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/azurydev/wrangler.json/issues"
+    "url": "https://github.com/azurydev/wjson/issues"
   },
-  "homepage": "https://github.com/azurydev/wrangler.json#readme",
+  "homepage": "https://github.com/azurydev/wjson#readme",
   "dependencies": {
     "esbuild": "^0.14.48"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.23.0",
     "@types/minimist": "^1.2.2",
     "@types/node": "^18.0.3",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
