@@ -1,0 +1,58 @@
+{
+  "name": "wrangler.json",
+  "version": "0.1.0",
+  "description": "Configure Wrangler in the format of your choice.",
+  "bin": {
+    "wrangler.json": "./dist/bin.js"
+  },
+  "types": "types/index.d.ts",
+  "main": "dist/index.js",
+  "exports": "./dist/index.js",
+  "scripts": {
+    "build:cli": "esbuild src/bin/index.ts --bundle --minify --format=cjs --legal-comments=none --platform=node --external:esbuild --outfile=dist/bin.js",
+    "build:api": "esbuild src/index.ts --bundle --minify --format=cjs --legal-comments=none --platform=node --external:esbuild --outfile=dist/index.js",
+    "build": "rimraf dist && rimraf types && tsc && npm run build:cli && npm run build:api",
+    "lint": "eslint src --ext .ts",
+    "format": "eslint src --fix",
+    "version:canary": "npm version prerelease --preid=canary",
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major",
+    "test": "npm run build:cli && cd test && node ../dist/bin.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azurydev/wrangler.json.git"
+  },
+  "keywords": [
+    "wrangler.json",
+    "cloudflare",
+    "workers",
+    "wrangler"
+  ],
+  "author": "Samuel Kopp <opensource@azury.dev> (https://azury.dev)",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/azurydev/wrangler.json/issues"
+  },
+  "homepage": "https://github.com/azurydev/wrangler.json#readme",
+  "dependencies": {
+    "esbuild": "^0.14.48"
+  },
+  "devDependencies": {
+    "@types/minimist": "^1.2.2",
+    "@types/node": "^18.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "eslint": "^8.19.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "minimist": "^1.2.6",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.7.4"
+  },
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8"
+  }
+}
