@@ -1,0 +1,485 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "$id": "https://raw.githubusercontent.com/azurydev/wrangler.json/dev/schema.json",
+  "title": "wrangler.json",
+  "description": "Configure Wrangler in the format of your choice.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "accountId": {
+      "type": "string"
+    },
+    "workersDev": {
+      "type": "boolean"
+    },
+    "main": {
+      "type": "string"
+    },
+    "usageModel": {
+      "enum": ["bundled", "unbound"]
+    },
+    "compatibilityDate": {
+      "type": "string"
+    },
+    "compatibilityFlags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "triggers": {
+      "type": "object",
+      "properties": {
+        "crons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["crons"],
+      "additionalProperties": false
+    },
+    "durableObjects": {
+      "type": "object",
+      "properties": {
+        "bindings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "className": {
+                "type": "string"
+              },
+              "scriptName": {
+                "type": "string"
+              }
+            },
+            "required": ["name", "className", "scriptName"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": ["bindings"],
+      "additionalProperties": false
+    },
+    "migrations": {
+      "type": "object",
+      "properties": {
+        "tag": {
+          "type": "string"
+        },
+        "newClasses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "renamedClasses": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "from": {
+                "type": "string"
+              },
+              "to": {
+                "type": "string"
+              }
+            },
+            "required": ["from", "to"],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": ["tag", "newClasses", "renamedClasses", "deletedClasses"],
+      "additionalProperties": false
+    },
+    "r2Buckets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "binding": {
+            "type": "string"
+          },
+          "bucketName": {
+            "type": "string"
+          },
+          "previewBucketName": {
+            "type": "string"
+          }
+        },
+        "required": ["binding", "bucketName", "previewBucketName"],
+        "additionalProperties": false
+      }
+    },
+    "site": {
+      "type": "object",
+      "properties": {
+        "bucket": {
+          "type": "string"
+        },
+        "include": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "exclude": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["bucket", "include", "exclude"],
+      "additionalProperties": false
+    },
+    "build": {
+      "type": "object",
+      "properties": {
+        "command": {
+          "type": "string"
+        },
+        "cwd": {
+          "type": "string"
+        },
+        "watchDirectory": {
+          "type": "string"
+        }
+      },
+      "required": ["command"],
+      "additionalProperties": false
+    },
+    "rules": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": ["Text", "Data", "CompiledWasm"]
+        },
+        "globs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "fallthrough": {
+          "type": "boolean"
+        }
+      },
+      "required": ["type", "globs"],
+      "additionalProperties": false
+    },
+    "tsconfig": {
+      "type": "string"
+    },
+    "minify": {
+      "type": "boolean"
+    },
+    "nodeCompatibility": {
+      "type": "boolean"
+    },
+    "dev": {
+      "type": "object",
+      "properties": {
+        "ip": {
+          "type": "string"
+        },
+        "port": {
+          "type": "number"
+        },
+        "localProtocol": {
+          "enum": ["http", "https"]
+        },
+        "host": {
+          "oneOf": [
+            {
+              "type": "string"
+            }, 
+            {
+              "type": "object",
+              "properties": {
+                "pattern": {
+                  "type": "string"
+                },
+                "zoneName": {
+                  "type": "string"
+                },
+                "zoneId": {
+                  "type": "string"
+                }
+              },
+              "required": ["pattern"],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "binding": {
+            "type": "string"
+          },
+          "service": {
+            "type": "string"
+          },
+          "environment": {
+            "type": "string"
+          }
+        },
+        "required": ["binding", "service", "environment"],
+        "additionalProperties": false
+      }
+    },
+    "production": {
+      "type": "object",
+      "properties": {
+        "route": {
+          "oneOf": [
+            {
+              "type": "string"
+            }, {
+              "type": "object",
+              "properties": {
+                "pattern": {
+                  "type": "string"
+                },
+                "zoneName": {
+                  "type": "string"
+                },
+                "zoneId": {
+                  "type": "string"
+                }
+              },
+              "required": ["pattern"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "routes": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "pattern": {
+                    "type": "string"
+                  },
+                  "zoneName": {
+                    "type": "string"
+                  },
+                  "zoneId": {
+                    "type": "string"
+                  }
+                },
+                "required": ["pattern"],
+                "additionalProperties": false
+              }
+            }
+          ]
+        },
+        "kvNamespaces": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "binding": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "previewId": {
+                "type": "string"
+              }
+            },
+            "required": ["binding", "id", "previewId"],
+            "additionalProperties": false
+          }
+        },
+        "variables": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "staging": {
+      "type": "object",
+      "properties": {
+        "route": {
+          "oneOf": [
+            {
+              "type": "string"
+            }, {
+              "type": "object",
+              "properties": {
+                "pattern": {
+                  "type": "string"
+                },
+                "zoneName": {
+                  "type": "string"
+                },
+                "zoneId": {
+                  "type": "string"
+                }
+              },
+              "required": ["pattern"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "routes": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "pattern": {
+                    "type": "string"
+                  },
+                  "zoneName": {
+                    "type": "string"
+                  },
+                  "zoneId": {
+                    "type": "string"
+                  }
+                },
+                "required": ["pattern"],
+                "additionalProperties": false
+              }
+            }
+          ]
+        },
+        "kvNamespaces": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "binding": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "previewId": {
+                "type": "string"
+              }
+            },
+            "required": ["binding", "id", "previewId"],
+            "additionalProperties": false
+          }
+        },
+        "variables": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    },
+    "development": {
+      "type": "object",
+      "properties": {
+        "route": {
+          "oneOf": [
+            {
+              "type": "string"
+            }, {
+              "type": "object",
+              "properties": {
+                "pattern": {
+                  "type": "string"
+                },
+                "zoneName": {
+                  "type": "string"
+                },
+                "zoneId": {
+                  "type": "string"
+                }
+              },
+              "required": ["pattern"],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "routes": {
+          "oneOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "pattern": {
+                    "type": "string"
+                  },
+                  "zoneName": {
+                    "type": "string"
+                  },
+                  "zoneId": {
+                    "type": "string"
+                  }
+                },
+                "required": ["pattern"],
+                "additionalProperties": false
+              }
+            }
+          ]
+        },
+        "kvNamespaces": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "binding": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "previewId": {
+                "type": "string"
+              }
+            },
+            "required": ["binding", "id", "previewId"],
+            "additionalProperties": false
+          }
+        },
+        "variables": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["name", "accountId"],
+  "additionalProperties": false
+}
