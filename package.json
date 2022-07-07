@@ -1,6 +1,6 @@
 {
   "name": "wrangler.json",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Configure Wrangler in the format of your choice.",
   "bin": {
     "wjson": "./dist/bin.js"
