@@ -2,8 +2,6 @@ import type { WranglerConfig } from '../type'
 
 export const generateConfig = async (c: WranglerConfig) => {
   let config = ''
-
-  config += `name = "${c.name}"`
   
   config += `\naccount_id = "${c.accountId}"`
 
@@ -53,6 +51,9 @@ export const generateConfig = async (c: WranglerConfig) => {
   }
 
   if (c.development) {
+    if (c.development.name)
+      config += `name = "${c.development.name}"\n`
+
     if (c.development.route && typeof c.development.route === 'string')
       config += `route = "${c.development.route}"`
     else if (typeof c.development.route === 'object')
@@ -146,6 +147,9 @@ export const generateConfig = async (c: WranglerConfig) => {
   if (c.staging) {
     config += `\n\n[env.staging]\n`
 
+    if (c.staging.name)
+      config += `  name = "${c.staging.name}"\n`
+
     if (c.staging.route && typeof c.staging.route === 'string')
       config += `  route = "${c.staging.route}"`
     else if (typeof c.staging.route === 'object')
@@ -186,6 +190,9 @@ export const generateConfig = async (c: WranglerConfig) => {
 
   if (c.production) {
     config += `\n\n[env.production]\n`
+
+    if (c.production.name)
+      config += `  name = "${c.production.name}"\n`
 
     if (c.production.route && typeof c.production.route === 'string')
       config += `  route = "${c.production.route}"`

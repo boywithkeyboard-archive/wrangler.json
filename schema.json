@@ -5,9 +5,6 @@
   "description": "Configure Wrangler in the format of your choice.",
   "type": "object",
   "properties": {
-    "name": {
-      "type": "string"
-    },
     "accountId": {
       "type": "string"
     },
@@ -245,6 +242,9 @@
     "production": {
       "type": "object",
       "properties": {
+        "name": {
+          "type": "string"
+        },
         "route": {
           "oneOf": [
             {
@@ -324,6 +324,9 @@
     "staging": {
       "type": "object",
       "properties": {
+        "name": {
+          "type": "string"
+        },
         "route": {
           "oneOf": [
             {
@@ -403,6 +406,9 @@
     "development": {
       "type": "object",
       "properties": {
+        "name": {
+          "type": "string"
+        },
         "route": {
           "oneOf": [
             {
@@ -477,9 +483,9 @@
           "type": "object"
         }
       },
+      "required": ["name"],
       "additionalProperties": false
     }
   },
-  "required": ["name", "accountId"],
-  "additionalProperties": false
+  "required": ["development", "accountId"]
 }

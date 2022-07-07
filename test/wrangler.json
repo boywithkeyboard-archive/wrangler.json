@@ -1,6 +1,4 @@
-{
-  "name": "my awesome worker",
-  
+{ 
   "accountId": "0123456789",
 
   "workersDev": true,
@@ -115,6 +113,8 @@
   ],
 
   "development": {
+    "name": "my awesome worker",
+
     "kvNamespaces": [{
       "binding": "lol", "id": "bruh", "previewId": "fun"
     }],
@@ -145,6 +145,7 @@
   },
 
   "production": {
+    "name": "my awesome worker 2",
     "route": "/api",
     "variables": {
       "some": "other variable",

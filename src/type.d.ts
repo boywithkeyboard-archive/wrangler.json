@@ -1,4 +1,6 @@
 export type WranglerEnv = {
+  name?: string
+
   route?:
     | string
     | {
@@ -25,7 +27,6 @@ export type WranglerEnv = {
 }
 
 export type WranglerConfig = {
-  name: string
   accountId: string
   workersDev?: boolean
 
@@ -71,7 +72,34 @@ export type WranglerConfig = {
     exclude: string[]
   }
 
-  development?: WranglerEnv
+  development: {
+    name: string
+  
+    route?:
+      | string
+      | {
+          pattern: string
+          zoneName?: string
+          zoneId?: string
+        }
+  
+    kvNamespaces?: {
+      binding: string
+      id: string
+      previewId: string
+    }[],
+  
+    routes?:
+      | string[]
+      | {
+          pattern: string
+          zoneName?: string
+          zoneId?: string
+        }[]
+  
+    variables?: { [key: string]: any } // vars
+  }
+
   staging?: WranglerEnv
   production?: WranglerEnv
 
