@@ -2,7 +2,7 @@
 
 ## v0.2.0
 
-## Breaking Changes
+### Breaking Changes
 
 - renamed package to `@darkflare/wjson`
 
