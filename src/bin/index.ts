@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import minimist from 'minimist'
