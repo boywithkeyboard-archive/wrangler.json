@@ -35,9 +35,14 @@ jobs:
           echo "$CHANGELOG" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      - name: Publish Package
+      - name: Configure NPM
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
+          cat .npmrc
+
+      - name: Publish Package 📦
         run: npm publish
       
       - name: Publish Release
