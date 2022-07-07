@@ -16,7 +16,7 @@ npm i -D wrangler.json
 Run the below command and **wrangler.json** will automatically search for your configuration file and generate a `wrangler.toml` for you.
 
 ```bash
-wrangler.json
+wjson
 ```
 
 ### Automatically Detectable Files
@@ -29,7 +29,7 @@ wrangler.json
 
 ### Options
 
-- `--config` to use a custom config, e.g. `wrangler.json --config="./my.json"`
+- `--config` to use a custom config, e.g. `wjson --config="./my.json"`
 
 ## Usage (API)
 

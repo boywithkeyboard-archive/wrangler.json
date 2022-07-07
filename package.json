@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Configure Wrangler in the format of your choice.",
   "bin": {
-    "wrangler.json": "./dist/bin.js"
+    "wjson": "./dist/bin.js"
   },
   "types": "types/index.d.ts",
   "main": "dist/index.js",
