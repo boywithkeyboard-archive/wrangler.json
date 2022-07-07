@@ -38,7 +38,7 @@ jobs:
       - name: Publish Package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish
+        run: npm publish --access public
       
       - name: Publish Release
         uses: actions/github-script@v6
