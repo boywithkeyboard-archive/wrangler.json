@@ -1,4 +1,4 @@
-import { stat } from 'node:fs/promises'
+import { readFile, stat, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { build } from 'esbuild'
 import type { WranglerConfig } from '../type'
@@ -25,8 +25,41 @@ const buildConfig = async (path: string) => {
   })
 }
 
+const loadExtendedConfig = async (config: WranglerConfig): Promise<WranglerConfig> => {
+  try {
+    if (!config.extends || (!config.extends.startsWith('http://') && !config.extends.startsWith('https://'))) return config
+
+    let data = await (await fetch(config.extends)).text()
+
+    if (!data || !config.extends.endsWith('.json')) return config
+
+    await writeFile(join(__dirname, '../.cache/config.json'), data)
+
+    config.extends = undefined
+
+    const config2 = await parseConfig('wjson_internal:' + join(__dirname, '../.cache/config.json'))
+
+    if (!config2) return config
+
+    config = {
+      ...config2,
+      ...config
+    }
+    if (config.extends)
+      return loadExtendedConfig(config)
+  } catch (err) {
+    return config
+  }
+
+  return config
+}
+
 export const parseConfig = async (path?: string) => {
   if (!path) path = process.cwd()
+
+  let internalParsing = path.startsWith('wjson_internal:')
+
+  if (internalParsing) path = path.replace('wjson_internal:', '')
 
   const stats = await getStats(path)
   
@@ -40,9 +73,7 @@ export const parseConfig = async (path?: string) => {
       const c = await require(path)
 
       config = c
-    }
-    
-    if (path.endsWith('.js')) {
+    } else if (path.endsWith('.js')) {
       await buildConfig(path)
 
       const c = await require(join(__dirname, '../.cache/config.js'))
@@ -101,6 +132,10 @@ export const parseConfig = async (path?: string) => {
     } else {
       return undefined
     }
+  }
+
+  if (config.extends && !internalParsing) {
+    config = await loadExtendedConfig(config)
   }
 
   return config

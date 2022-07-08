@@ -5,6 +5,12 @@
   "description": "Configure Wrangler in the format of your choice.",
   "type": "object",
   "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "extends": {
+      "type": "string"
+    },
     "accountId": {
       "type": "string"
     },
