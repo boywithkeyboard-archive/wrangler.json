@@ -1,4 +1,6 @@
-{ 
+{
+  "extends": "https://gist.githubusercontent.com/azuryceo/74aa5270067a59712db753705f1d37db/raw/9fefecdd32a8ca0a050c792352fa45d9a68fa63a/wjson_test.json",
+
   "accountId": "0123456789",
 
   "workersDev": true,
@@ -119,22 +121,6 @@
       "binding": "lol", "id": "bruh", "previewId": "fun"
     }],
     
-    "routes": [
-      {
-        "pattern": "*",
-        "zoneName": "something",
-        "zoneId": "something"
-      }
-    ]
-  },
-
-  "staging": {
-    "variables": {
-      "some": "variable",
-      "lovely": 1,
-      "cool": true
-    },
-
     "routes": [
       {
         "pattern": "*",
