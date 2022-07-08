@@ -26,6 +26,8 @@ wjson
 - `wrangler.mjs`
 - `wrangler.cjs`
 - `wrangler.ts`
+- `wrangler.yaml`
+- `wrangler.yml`
 
 ### Options
 
@@ -76,6 +78,17 @@ const { defineConfig } = require('wjson')
 module.exports = defineConfig({
  // your config (w/ autocomplete)
 })
+```
+
+`yaml/yml`
+
+```yml
+accountId: '0123456789'
+
+development:
+  name: 'my-awesome-worker'
+
+# your config
 ```
 
 ## Config Syntax

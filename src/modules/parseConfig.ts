@@ -1,6 +1,7 @@
-import { readFile, stat, writeFile } from 'node:fs/promises'
+import { stat, writeFile, readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import { build } from 'esbuild'
+import yaml from 'js-yaml'
 import type { WranglerConfig } from '../type'
 
 const getStats = async (path: string) => {
@@ -29,7 +30,7 @@ const loadExtendedConfig = async (config: WranglerConfig): Promise<WranglerConfi
   try {
     if (!config.extends || (!config.extends.startsWith('http://') && !config.extends.startsWith('https://'))) return config
 
-    let data = await (await fetch(config.extends)).text()
+    const data = await (await fetch(config.extends)).text()
 
     if (!data || !config.extends.endsWith('.json')) return config
 
@@ -57,7 +58,7 @@ const loadExtendedConfig = async (config: WranglerConfig): Promise<WranglerConfi
 export const parseConfig = async (path?: string) => {
   if (!path) path = process.cwd()
 
-  let internalParsing = path.startsWith('wjson_internal:')
+  const internalParsing = path.startsWith('wjson_internal:')
 
   if (internalParsing) path = path.replace('wjson_internal:', '')
 
@@ -97,6 +98,10 @@ export const parseConfig = async (path?: string) => {
       const c = await require(join(__dirname, '../.cache/config.js'))
 
       config = c.default
+    } else if (path.endsWith('.yaml') || path.endsWith('.yml')) {
+      const c = yaml.load(await readFile(path, 'utf8')) as WranglerConfig
+
+      config = c
     } else {
       return undefined
     }
@@ -129,6 +134,14 @@ export const parseConfig = async (path?: string) => {
       const c = await require(join(__dirname, '../.cache/config.js'))
 
       config = c.default
+    } else if ((await getStats(join(path, './wrangler.yml')))?.isFile()) {
+      const c = yaml.load(await readFile(join(path, './wrangler.yml'), 'utf8')) as WranglerConfig
+
+      config = c
+    } else if ((await getStats(join(path, './wrangler.yaml')))?.isFile()) {
+      const c = yaml.load(await readFile(join(path, './wrangler.yaml'), 'utf8')) as WranglerConfig
+
+      config = c
     } else {
       return undefined
     }
