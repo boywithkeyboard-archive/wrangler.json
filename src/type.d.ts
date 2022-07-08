@@ -27,6 +27,8 @@ export type WranglerEnv = {
 }
 
 export type WranglerConfig = {
+  extends?: string
+  
   accountId: string
   workersDev?: boolean
 
