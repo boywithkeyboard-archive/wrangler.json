@@ -1,0 +1,83 @@
+extends: 'https://gist.githubusercontent.com/azuryceo/74aa5270067a59712db753705f1d37db/raw/9fefecdd32a8ca0a050c792352fa45d9a68fa63a/wjson_test.json'
+
+accountId: '0123456789'
+
+workersDev: true
+
+main: './dist/index.js'
+
+usageModel: 'bundled'
+
+compatibilityDate: '2022-06-01'
+
+compatibilityFlags: [
+  'flag one',
+  'flag two'
+]
+
+triggers:
+  crons: ['* * * * *']
+
+durableObjects:
+ bindings:
+    [{ name: 'something', className: 'something', scriptName: 'something' }]
+
+migrations:
+  tag: 'something'
+  newClasses: ['something']
+  renamedClasses: [{ from: 'something', to: 'something' }]
+  deletedClasses: 'something'
+
+r2Buckets: [{ binding: 'something', bucketName: 'something', previewBucketName: 'something' }]
+
+site:
+  bucket: 'something'
+  include: ['something']
+  exclude: ['something']
+
+build:
+  command: 'something'
+  cwd: 'something'
+  watchDirectory: 'something'
+
+rules:
+  type: 'Text'
+  globs: ['something']
+  fallthrough: true
+
+tsconfig: 'something'
+
+minify: true
+
+nodeCompatibility: true
+
+dev:
+  ip: '127.0.0.1'
+  port: 3000
+  localProtocol: 'http'
+  host:
+    pattern: '*'
+    zoneName: 'something'
+
+routes: [{ pattern: '*', zoneName: 'something' }]
+
+route:
+  pattern: '*'
+  zoneId: 'something'
+
+services: [{ binding: 'something', service: 'something', environment: 'something' }]
+
+development:
+  name: 'my awesome worker'
+
+  kvNamespaces: [{ binding: 'lol', id: 'bruh', previewId: 'fun' }]
+
+  routes: [{ pattern: '*', zoneName: 'something', zoneId: 'something' }]
+
+production:
+  name: 'my awesome worker 2'
+  route: '/api'
+  variables:
+    some: 'other variable'
+    lovely: 2
+    cool: false
