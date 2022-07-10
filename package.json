@@ -14,10 +14,6 @@
     "build": "rimraf dist && rimraf types && tsc && npm run build:cli && npm run build:api",
     "lint": "eslint src --ext .ts",
     "format": "eslint src --fix",
-    "version:canary": "npm version prerelease --preid=canary",
-    "version:patch": "npm version patch",
-    "version:minor": "npm version minor",
-    "version:major": "npm version major",
     "test": "npm run build:cli && cd test && node ../dist/bin.js"
   },
   "repository": {
@@ -41,6 +37,8 @@
     "esbuild": "^0.14.48"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.4.5",
+    "@changesets/cli": "^2.23.1",
     "@types/js-yaml": "^4.0.5",
     "@types/minimist": "^1.2.2",
     "@types/node": "^18.0.3",
