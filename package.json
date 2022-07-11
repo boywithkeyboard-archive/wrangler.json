@@ -1,6 +1,6 @@
 {
   "name": "@darkflare/wjson",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Configure Wrangler in the format of your choice.",
   "bin": {
     "wjson": "./dist/bin.js"
