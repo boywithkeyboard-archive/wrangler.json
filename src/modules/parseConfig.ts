@@ -1,5 +1,6 @@
 import { stat, writeFile, readFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import chalk from 'chalk'
 import { build } from 'esbuild'
 import yaml from 'js-yaml'
 import type { WranglerConfig } from '../type'
@@ -69,87 +70,91 @@ export const parseConfig = async (path?: string) => {
 
   let config: WranglerConfig
 
-  if (stats.isFile()) {
-    if (path.endsWith('.json')) {
-      const c = await require(path)
-
-      config = c
-    } else if (path.endsWith('.js')) {
-      await buildConfig(path)
-
-      const c = await require(join(__dirname, '../.cache/config.js'))
-
-      config = c.default
-    } else if (path.endsWith('.mjs')) {
-      await buildConfig(path)
-
-      const c = await require(join(__dirname, '../.cache/config.js'))
-
-      config = c.default
-    } else if (path.endsWith('.cjs')) {
-      await buildConfig(path)
-
-      const c = await require(join(__dirname, '../.cache/config.js'))
-
-      config = c.default
-    } else if (path.endsWith('.ts')) {
-      await buildConfig(path)
-
-      const c = await require(join(__dirname, '../.cache/config.js'))
-
-      config = c.default
-    } else if (path.endsWith('.yaml') || path.endsWith('.yml')) {
-      const c = yaml.load(await readFile(path, 'utf8')) as WranglerConfig
-
-      config = c
+  try {
+    if (stats.isFile()) {
+      if (path.endsWith('.json')) {
+        const c = await require(path)
+  
+        config = c
+      } else if (path.endsWith('.js')) {
+        await buildConfig(path)
+  
+        const c = await require(join(__dirname, '../.cache/config.js'))
+  
+        config = c.default
+      } else if (path.endsWith('.mjs')) {
+        await buildConfig(path)
+  
+        const c = await require(join(__dirname, '../.cache/config.js'))
+  
+        config = c.default
+      } else if (path.endsWith('.cjs')) {
+        await buildConfig(path)
+  
+        const c = await require(join(__dirname, '../.cache/config.js'))
+  
+        config = c.default
+      } else if (path.endsWith('.ts')) {
+        await buildConfig(path)
+  
+        const c = await require(join(__dirname, '../.cache/config.js'))
+  
+        config = c.default
+      } else if (path.endsWith('.yaml') || path.endsWith('.yml')) {
+        const c = yaml.load(await readFile(path, 'utf8')) as WranglerConfig
+  
+        config = c
+      } else {
+        return undefined
+      }
     } else {
-      return undefined
+      if ((await getStats(join(path, './wrangler.json')))?.isFile()) {
+        const c = await require(join(path, './wrangler.json'))
+  
+        config = c
+      } else if ((await getStats(join(path, './wrangler.js')))?.isFile()) {
+        await buildConfig(join(path, './wrangler.js'))
+  
+        const c = await require(join(__dirname, '../.cache/config.js'))
+  
+        config = c.default
+      } else if ((await getStats(join(path, './wrangler.mjs')))?.isFile()) {
+        await buildConfig(join(path, './wrangler.mjs'))
+  
+        const c = await require(join(__dirname, '../.cache/config.js'))
+  
+        config = c.default
+      } else if ((await getStats(join(path, './wrangler.cjs')))?.isFile()) {
+        await buildConfig(join(path, './wrangler.cjs'))
+  
+        const c = await require(join(__dirname, '../.cache/config.js'))
+  
+        config = c.default
+      } else if ((await getStats(join(path, './wrangler.ts')))?.isFile()) {
+        await buildConfig(join(path, './wrangler.ts'))
+  
+        const c = await require(join(__dirname, '../.cache/config.js'))
+  
+        config = c.default
+      } else if ((await getStats(join(path, './wrangler.yml')))?.isFile()) {
+        const c = yaml.load(await readFile(join(path, './wrangler.yml'), 'utf8')) as WranglerConfig
+  
+        config = c
+      } else if ((await getStats(join(path, './wrangler.yaml')))?.isFile()) {
+        const c = yaml.load(await readFile(join(path, './wrangler.yaml'), 'utf8')) as WranglerConfig
+  
+        config = c
+      } else {
+        return undefined
+      }
     }
-  } else {
-    if ((await getStats(join(path, './wrangler.json')))?.isFile()) {
-      const c = await require(join(path, './wrangler.json'))
 
-      config = c
-    } else if ((await getStats(join(path, './wrangler.js')))?.isFile()) {
-      await buildConfig(join(path, './wrangler.js'))
-
-      const c = await require(join(__dirname, '../.cache/config.js'))
-
-      config = c.default
-    } else if ((await getStats(join(path, './wrangler.mjs')))?.isFile()) {
-      await buildConfig(join(path, './wrangler.mjs'))
-
-      const c = await require(join(__dirname, '../.cache/config.js'))
-
-      config = c.default
-    } else if ((await getStats(join(path, './wrangler.cjs')))?.isFile()) {
-      await buildConfig(join(path, './wrangler.cjs'))
-
-      const c = await require(join(__dirname, '../.cache/config.js'))
-
-      config = c.default
-    } else if ((await getStats(join(path, './wrangler.ts')))?.isFile()) {
-      await buildConfig(join(path, './wrangler.ts'))
-
-      const c = await require(join(__dirname, '../.cache/config.js'))
-
-      config = c.default
-    } else if ((await getStats(join(path, './wrangler.yml')))?.isFile()) {
-      const c = yaml.load(await readFile(join(path, './wrangler.yml'), 'utf8')) as WranglerConfig
-
-      config = c
-    } else if ((await getStats(join(path, './wrangler.yaml')))?.isFile()) {
-      const c = yaml.load(await readFile(join(path, './wrangler.yaml'), 'utf8')) as WranglerConfig
-
-      config = c
-    } else {
-      return undefined
+    if (config.extends && !internalParsing) {
+      config = await loadExtendedConfig(config)
     }
+  
+    return config
+  } catch (err) {
+    console.log(chalk.bold.redBright('error') + chalk.blackBright(' - cannot parse your config!'))
   }
-
-  if (config.extends && !internalParsing) {
-    config = await loadExtendedConfig(config)
-  }
-
-  return config
 }

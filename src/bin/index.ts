@@ -16,5 +16,10 @@ import { parseConfig } from '../modules/parseConfig'
 
   const directory = argv.config ? dirname(join(process.cwd(), argv.config)) : process.cwd()
 
-  await writeFile(join(directory, './wrangler.toml'), await generateConfig(config))
+  const wranglerConfig = await generateConfig(config)
+
+  if (!wranglerConfig)
+    process.exit()
+
+  await writeFile(join(directory, './wrangler.toml'), wranglerConfig)
 })()
