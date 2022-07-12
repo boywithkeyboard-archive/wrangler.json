@@ -42,7 +42,7 @@
     "@types/js-yaml": "^4.0.5",
     "@types/minimist": "^1.2.2",
     "@types/node": "^18.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
     "chalk": "^5.0.1",
     "eslint": "^8.19.0",
