@@ -41,7 +41,7 @@
     "@changesets/cli": "^2.23.1",
     "@types/js-yaml": "^4.0.5",
     "@types/minimist": "^1.2.2",
-    "@types/node": "^18.0.3",
+    "@types/node": "^18.0.4",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
     "chalk": "^5.0.1",
