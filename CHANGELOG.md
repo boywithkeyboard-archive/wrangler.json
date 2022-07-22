@@ -1,5 +1,13 @@
 # @darkflare/wjson
 
+## 0.4.0
+
+### Minor Changes
+
+- [#17](https://github.com/azurydev/wjson/pull/17) [`52b884e`](https://github.com/azurydev/wjson/commit/52b884ea22875b3b6bc53d7f1aee5429e67366e7) Thanks [@unvented](https://github.com/unvented)! - refactor!: move env related config under `env` key
+
+  Move all environment-related settings under the `env` key to avoid confusion.
+
 ## 0.3.1
 
 ### Patch Changes
