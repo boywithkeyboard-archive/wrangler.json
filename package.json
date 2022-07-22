@@ -18,21 +18,23 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/azurydev/wjson.git"
+    "url": "git+https://github.com/darkflarengine/wjson.git"
   },
   "keywords": [
     "wrangler.json",
     "wjson",
     "cloudflare",
     "workers",
-    "wrangler"
+    "wrangler",
+    "darkflare",
+    "darkflarengine"
   ],
   "author": "Samuel Kopp <opensource@azury.dev> (https://azury.dev)",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/azurydev/wjson/issues"
+    "url": "https://github.com/darkflarengine/wjson/issues"
   },
-  "homepage": "https://github.com/azurydev/wjson#readme",
+  "homepage": "https://github.com/darkflarengine/wjson#readme",
   "dependencies": {
     "esbuild": "^0.14.49"
   },
