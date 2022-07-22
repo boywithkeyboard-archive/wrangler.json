@@ -3,7 +3,7 @@
   "changelog": [
     "@changesets/changelog-github",
     {
-      "repo": "azurydev/wjson"
+      "repo": "darkflarengine/wjson"
     }
   ],
   "commit": false,
