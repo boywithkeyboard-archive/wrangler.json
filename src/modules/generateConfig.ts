@@ -52,41 +52,41 @@ export const generateConfig = async (c: WranglerConfig) => {
       config += '\n]\n'
     }
   
-    if (c.development) {
-      if (c.development.name)
-        config += `name = "${c.development.name}"\n`
+    if (c.env.development) {
+      if (c.env.development.name)
+        config += `name = "${c.env.development.name}"\n`
   
-      if (c.development.route && typeof c.development.route === 'string')
-        config += `route = "${c.development.route}"`
-      else if (typeof c.development.route === 'object')
-        config += `route = { pattern = "${c.development.route.pattern}"${c.development.route.zoneName ? `, zone_name = "${c.development.route.zoneName}"` : ''}${c.development.route.zoneId ? `, zone_id = "${c.development.route.zoneId}"` : ''} }`
+      if (c.env.development.route && typeof c.env.development.route === 'string')
+        config += `route = "${c.env.development.route}"`
+      else if (typeof c.env.development.route === 'object')
+        config += `route = { pattern = "${c.env.development.route.pattern}"${c.env.development.route.zoneName ? `, zone_name = "${c.env.development.route.zoneName}"` : ''}${c.env.development.route.zoneId ? `, zone_id = "${c.env.development.route.zoneId}"` : ''} }`
   
-      if (c.development.routes && typeof c.development.routes[0] === 'string') {
-        config += `routes = ${JSON.stringify(c.development.routes)}`
-      } else if (c.development.routes && typeof c.development.routes[0] === 'object') {
+      if (c.env.development.routes && typeof c.env.development.routes[0] === 'string') {
+        config += `routes = ${JSON.stringify(c.env.development.routes)}`
+      } else if (c.env.development.routes && typeof c.env.development.routes[0] === 'object') {
         config += 'routes = ['
   
-        for (const r of c.development.routes as any) {
+        for (const r of c.env.development.routes as any) {
           config += `\n  { pattern = "${r.pattern}"${r.zoneName ? `, zone_name = "${r.zoneName}"` : ''}${r.zoneId ? `, zone_id = "${r.zoneId}"` : ''} },`
         }
   
         config += '\n]'
       }
   
-      if (c.development.kvNamespaces) {
+      if (c.env.development.kvNamespaces) {
         config += '\nkv_namespaces = [\n'
   
-        for (const n of c.development.kvNamespaces) {
+        for (const n of c.env.development.kvNamespaces) {
           config += `  { binding = "${n.binding}", id = "${n.id}", preview_id = "${n.previewId}" },`
         }
   
         config += '\n]\n'
       }
   
-      if (c.development.variables) {
+      if (c.env.development.variables) {
         config += '\n[vars]'
   
-        for (const [key, value] of Object.entries(c.development.variables)) {
+        for (const [key, value] of Object.entries(c.env.development.variables)) {
           config += `\n  ${key} = ${typeof value === 'string' ? `"${value}"` : value}`
         }
   
@@ -146,43 +146,43 @@ export const generateConfig = async (c: WranglerConfig) => {
     if (c.triggers)
       config += `\n\n[triggers]\n  crons = ${JSON.stringify(c.triggers.crons)}\n`
   
-    if (c.staging) {
+    if (c.env.staging) {
       config += `\n\n[env.staging]\n`
   
-      if (c.staging.name)
-        config += `  name = "${c.staging.name}"\n`
+      if (c.env.staging.name)
+        config += `  name = "${c.env.staging.name}"\n`
   
-      if (c.staging.route && typeof c.staging.route === 'string')
-        config += `  route = "${c.staging.route}"`
-      else if (typeof c.staging.route === 'object')
-        config += `  route = { pattern = "${c.staging.route.pattern}"${c.staging.route.zoneName ? `, zone_name = "${c.staging.route.zoneName}"` : ''}${c.staging.route.zoneId ? `, zone_id = "${c.staging.route.zoneId}"` : ''} }`
+      if (c.env.staging.route && typeof c.env.staging.route === 'string')
+        config += `  route = "${c.env.staging.route}"`
+      else if (typeof c.env.staging.route === 'object')
+        config += `  route = { pattern = "${c.env.staging.route.pattern}"${c.env.staging.route.zoneName ? `, zone_name = "${c.env.staging.route.zoneName}"` : ''}${c.env.staging.route.zoneId ? `, zone_id = "${c.env.staging.route.zoneId}"` : ''} }`
   
-      if (c.staging.routes && typeof c.staging.routes[0] === 'string') {
-        config += `  routes = ${JSON.stringify(c.staging.routes)}`
-      } else if (c.staging.routes && typeof c.staging.routes[0] === 'object') {
+      if (c.env.staging.routes && typeof c.env.staging.routes[0] === 'string') {
+        config += `  routes = ${JSON.stringify(c.env.staging.routes)}`
+      } else if (c.env.staging.routes && typeof c.env.staging.routes[0] === 'object') {
         config += '  routes = ['
   
-        for (const r of c.staging.routes as any) {
+        for (const r of c.env.staging.routes as any) {
           config += `\n    { pattern = "${r.pattern}"${r.zoneName ? `, zone_name = "${r.zoneName}"` : ''}${r.zoneId ? `, zone_id = "${r.zoneId}"` : ''} },`
         }
   
         config += '\n  ]'
       }
   
-      if (c.staging.kvNamespaces) {
+      if (c.env.staging.kvNamespaces) {
         config += '\nkv_namespaces = [\n'
   
-        for (const n of c.staging.kvNamespaces) {
+        for (const n of c.env.staging.kvNamespaces) {
           config += `  { binding = "${n.binding}", id = "${n.id}", preview_id = "${n.previewId}" },`
         }
   
         config += '\n  ]\n'
       }
   
-      if (c.staging.variables) {
+      if (c.env.staging.variables) {
         config += '\n[env.staging.vars]'
   
-        for (const [key, value] of Object.entries(c.staging.variables)) {
+        for (const [key, value] of Object.entries(c.env.staging.variables)) {
           config += `\n  ${key} = ${typeof value === 'string' ? `"${value}"` : value}`
         }
   
@@ -190,43 +190,43 @@ export const generateConfig = async (c: WranglerConfig) => {
       }
     }
   
-    if (c.production) {
+    if (c.env.production) {
       config += `\n\n[env.production]\n`
   
-      if (c.production.name)
-        config += `  name = "${c.production.name}"\n`
+      if (c.env.production.name)
+        config += `  name = "${c.env.production.name}"\n`
   
-      if (c.production.route && typeof c.production.route === 'string')
-        config += `  route = "${c.production.route}"`
-      else if (typeof c.production.route === 'object')
-        config += `  route = { pattern = "${c.production.route.pattern}"${c.production.route.zoneName ? `, zone_name = "${c.production.route.zoneName}"` : ''}${c.production.route.zoneId ? `, zone_id = "${c.production.route.zoneId}"` : ''} }`
+      if (c.env.production.route && typeof c.env.production.route === 'string')
+        config += `  route = "${c.env.production.route}"`
+      else if (typeof c.env.production.route === 'object')
+        config += `  route = { pattern = "${c.env.production.route.pattern}"${c.env.production.route.zoneName ? `, zone_name = "${c.env.production.route.zoneName}"` : ''}${c.env.production.route.zoneId ? `, zone_id = "${c.env.production.route.zoneId}"` : ''} }`
   
-      if (c.production.routes && typeof c.production.routes[0] === 'string') {
-        config += `  routes = ${JSON.stringify(c.production.routes)}`
-      } else if (c.production.routes && typeof c.production.routes[0] === 'object') {
+      if (c.env.production.routes && typeof c.env.production.routes[0] === 'string') {
+        config += `  routes = ${JSON.stringify(c.env.production.routes)}`
+      } else if (c.env.production.routes && typeof c.env.production.routes[0] === 'object') {
         config += '  routes = ['
   
-        for (const r of c.production.routes as any) {
+        for (const r of c.env.production.routes as any) {
           config += `\n    { pattern = "${r.pattern}"${r.zoneName ? `, zone_name = "${r.zoneName}"` : ''}${r.zoneId ? `, zone_id = "${r.zoneId}"` : ''} },`
         }
   
         config += '\n  ]'
       }
   
-      if (c.production.kvNamespaces) {
+      if (c.env.production.kvNamespaces) {
         config += '\nkv_namespaces = [\n'
   
-        for (const n of c.production.kvNamespaces) {
+        for (const n of c.env.production.kvNamespaces) {
           config += `  { binding = "${n.binding}", id = "${n.id}", preview_id = "${n.previewId}" },`
         }
   
         config += '\n]\n'
       }
   
-      if (c.production.variables) {
+      if (c.env.production.variables) {
         config += '\n[env.production.vars]'
   
-        for (const [key, value] of Object.entries(c.production.variables)) {
+        for (const [key, value] of Object.entries(c.env.production.variables)) {
           config += `\n  ${key} = ${typeof value === 'string' ? `"${value}"` : value}`
         }
   

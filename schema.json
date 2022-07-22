@@ -98,6 +98,12 @@
             "required": ["from", "to"],
             "additionalProperties": false
           }
+        },
+        "deletedClasses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "required": ["tag", "newClasses", "renamedClasses", "deletedClasses"],
@@ -245,253 +251,261 @@
         "additionalProperties": false
       }
     },
-    "production": {
+    "env": {
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string"
-        },
-        "route": {
-          "oneOf": [
-            {
+        "production": {
+          "type": "object",
+          "properties": {
+            "name": {
               "type": "string"
-            }, {
-              "type": "object",
-              "properties": {
-                "pattern": {
-                  "type": "string"
-                },
-                "zoneName": {
-                  "type": "string"
-                },
-                "zoneId": {
-                  "type": "string"
-                }
-              },
-              "required": ["pattern"],
-              "additionalProperties": false
-            }
-          ]
-        },
-        "routes": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
             },
-            {
+            "route": {
+              "oneOf": [
+                {
+                  "type": "string"
+                }, {
+                  "type": "object",
+                  "properties": {
+                    "pattern": {
+                      "type": "string"
+                    },
+                    "zoneName": {
+                      "type": "string"
+                    },
+                    "zoneId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["pattern"],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "routes": {
+              "oneOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "type": "string"
+                      },
+                      "zoneName": {
+                        "type": "string"
+                      },
+                      "zoneId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["pattern"],
+                    "additionalProperties": false
+                  }
+                }
+              ]
+            },
+            "kvNamespaces": {
               "type": "array",
               "items": {
                 "type": "object",
                 "properties": {
-                  "pattern": {
+                  "binding": {
                     "type": "string"
                   },
-                  "zoneName": {
+                  "id": {
                     "type": "string"
                   },
-                  "zoneId": {
+                  "previewId": {
                     "type": "string"
                   }
                 },
-                "required": ["pattern"],
+                "required": ["binding", "id", "previewId"],
                 "additionalProperties": false
               }
-            }
-          ]
-        },
-        "kvNamespaces": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "binding": {
-                "type": "string"
-              },
-              "id": {
-                "type": "string"
-              },
-              "previewId": {
-                "type": "string"
-              }
             },
-            "required": ["binding", "id", "previewId"],
-            "additionalProperties": false
-          }
+            "variables": {
+              "type": "object"
+            }
+          },
+          "additionalProperties": false
         },
-        "variables": {
-          "type": "object"
-        }
-      },
-      "additionalProperties": false
-    },
-    "staging": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "route": {
-          "oneOf": [
-            {
+        "staging": {
+          "type": "object",
+          "properties": {
+            "name": {
               "type": "string"
-            }, {
-              "type": "object",
-              "properties": {
-                "pattern": {
-                  "type": "string"
-                },
-                "zoneName": {
-                  "type": "string"
-                },
-                "zoneId": {
-                  "type": "string"
-                }
-              },
-              "required": ["pattern"],
-              "additionalProperties": false
-            }
-          ]
-        },
-        "routes": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
             },
-            {
+            "route": {
+              "oneOf": [
+                {
+                  "type": "string"
+                }, {
+                  "type": "object",
+                  "properties": {
+                    "pattern": {
+                      "type": "string"
+                    },
+                    "zoneName": {
+                      "type": "string"
+                    },
+                    "zoneId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["pattern"],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "routes": {
+              "oneOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "type": "string"
+                      },
+                      "zoneName": {
+                        "type": "string"
+                      },
+                      "zoneId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["pattern"],
+                    "additionalProperties": false
+                  }
+                }
+              ]
+            },
+            "kvNamespaces": {
               "type": "array",
               "items": {
                 "type": "object",
                 "properties": {
-                  "pattern": {
+                  "binding": {
                     "type": "string"
                   },
-                  "zoneName": {
+                  "id": {
                     "type": "string"
                   },
-                  "zoneId": {
+                  "previewId": {
                     "type": "string"
                   }
                 },
-                "required": ["pattern"],
+                "required": ["binding", "id", "previewId"],
                 "additionalProperties": false
               }
-            }
-          ]
-        },
-        "kvNamespaces": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "binding": {
-                "type": "string"
-              },
-              "id": {
-                "type": "string"
-              },
-              "previewId": {
-                "type": "string"
-              }
             },
-            "required": ["binding", "id", "previewId"],
-            "additionalProperties": false
-          }
+            "variables": {
+              "type": "object"
+            }
+          },
+          "additionalProperties": false
         },
-        "variables": {
-          "type": "object"
-        }
-      },
-      "additionalProperties": false
-    },
-    "development": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "route": {
-          "oneOf": [
-            {
+        "development": {
+          "type": "object",
+          "properties": {
+            "name": {
               "type": "string"
-            }, {
-              "type": "object",
-              "properties": {
-                "pattern": {
-                  "type": "string"
-                },
-                "zoneName": {
-                  "type": "string"
-                },
-                "zoneId": {
-                  "type": "string"
-                }
-              },
-              "required": ["pattern"],
-              "additionalProperties": false
-            }
-          ]
-        },
-        "routes": {
-          "oneOf": [
-            {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
             },
-            {
+            "route": {
+              "oneOf": [
+                {
+                  "type": "string"
+                }, {
+                  "type": "object",
+                  "properties": {
+                    "pattern": {
+                      "type": "string"
+                    },
+                    "zoneName": {
+                      "type": "string"
+                    },
+                    "zoneId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["pattern"],
+                  "additionalProperties": false
+                }
+              ]
+            },
+            "routes": {
+              "oneOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "pattern": {
+                        "type": "string"
+                      },
+                      "zoneName": {
+                        "type": "string"
+                      },
+                      "zoneId": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["pattern"],
+                    "additionalProperties": false
+                  }
+                }
+              ]
+            },
+            "kvNamespaces": {
               "type": "array",
               "items": {
                 "type": "object",
                 "properties": {
-                  "pattern": {
+                  "binding": {
                     "type": "string"
                   },
-                  "zoneName": {
+                  "id": {
                     "type": "string"
                   },
-                  "zoneId": {
+                  "previewId": {
                     "type": "string"
                   }
                 },
-                "required": ["pattern"],
+                "required": ["binding", "id", "previewId"],
                 "additionalProperties": false
               }
-            }
-          ]
-        },
-        "kvNamespaces": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "binding": {
-                "type": "string"
-              },
-              "id": {
-                "type": "string"
-              },
-              "previewId": {
-                "type": "string"
-              }
             },
-            "required": ["binding", "id", "previewId"],
-            "additionalProperties": false
-          }
-        },
-        "variables": {
-          "type": "object"
+            "variables": {
+              "type": "object"
+            }
+          },
+          "required": ["name"],
+          "additionalProperties": false
         }
       },
-      "required": ["name"],
+      "required": ["development"],
       "additionalProperties": false
     }
   },
-  "required": ["development", "accountId"]
+  "required": ["env", "accountId"],
+  "additionalProperties": false
 }

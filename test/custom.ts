@@ -8,7 +8,9 @@ export default defineConfig({
     'flag two'
   ],
 
-  development: {
-    name: 'my awesome worker'
+  env: {
+    development: {
+      name: 'my awesome worker'
+    }
   }
 })
