@@ -67,17 +67,18 @@ route:
 
 services: [{ binding: 'something', service: 'something', environment: 'something' }]
 
-development:
-  name: 'my awesome worker'
+env:
+  development:
+    name: 'my awesome worker'
 
-  kvNamespaces: [{ binding: 'lol', id: 'bruh', previewId: 'fun' }]
+    kvNamespaces: [{ binding: 'lol', id: 'bruh', previewId: 'fun' }]
 
-  routes: [{ pattern: '*', zoneName: 'something', zoneId: 'something' }]
+    routes: [{ pattern: '*', zoneName: 'something', zoneId: 'something' }]
 
-production:
-  name: 'my awesome worker 2'
-  route: '/api'
-  variables:
-    some: 'other variable'
-    lovely: 2
-    cool: false
+  production:
+    name: 'my awesome worker 2'
+    route: '/api'
+    variables:
+      some: 'other variable'
+      lovely: 2
+      cool: false

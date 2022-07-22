@@ -74,36 +74,38 @@ export type WranglerConfig = {
     exclude: string[]
   }
 
-  development: {
-    name: string
+  env: {
+    development: {
+      name: string
+    
+      route?:
+        | string
+        | {
+            pattern: string
+            zoneName?: string
+            zoneId?: string
+          }
+    
+      kvNamespaces?: {
+        binding: string
+        id: string
+        previewId: string
+      }[],
+    
+      routes?:
+        | string[]
+        | {
+            pattern: string
+            zoneName?: string
+            zoneId?: string
+          }[]
+    
+      variables?: { [key: string]: any } // vars
+    }
   
-    route?:
-      | string
-      | {
-          pattern: string
-          zoneName?: string
-          zoneId?: string
-        }
-  
-    kvNamespaces?: {
-      binding: string
-      id: string
-      previewId: string
-    }[],
-  
-    routes?:
-      | string[]
-      | {
-          pattern: string
-          zoneName?: string
-          zoneId?: string
-        }[]
-  
-    variables?: { [key: string]: any } // vars
+    staging?: WranglerEnv
+    production?: WranglerEnv
   }
-
-  staging?: WranglerEnv
-  production?: WranglerEnv
 
   build?: {
     command: string

@@ -1,4 +1,6 @@
 {
+  "$schema": "../schema.json",
+
   "extends": "https://gist.githubusercontent.com/azuryceo/74aa5270067a59712db753705f1d37db/raw/9fefecdd32a8ca0a050c792352fa45d9a68fa63a/wjson_test.json",
 
   "accountId": "0123456789",
@@ -94,18 +96,6 @@
     }
   },
 
-  "routes": [
-    {
-      "pattern": "*",
-      "zoneName": "something"
-    }
-  ],
-
-  "route": {
-    "pattern": "*",
-    "zoneId": "something"
-  },
-
   "services": [
     {
       "binding": "something",
@@ -114,29 +104,36 @@
     }
   ],
 
-  "development": {
-    "name": "my awesome worker",
-
-    "kvNamespaces": [{
-      "binding": "lol", "id": "bruh", "previewId": "fun"
-    }],
-    
-    "routes": [
-      {
+  "env": {
+    "development": {
+      "route": {
         "pattern": "*",
-        "zoneName": "something",
         "zoneId": "something"
-      }
-    ]
-  },
+      },
 
-  "production": {
-    "name": "my awesome worker 2",
-    "route": "/api",
-    "variables": {
-      "some": "other variable",
-      "lovely": 2,
-      "cool": false
+      "name": "my awesome worker",
+  
+      "kvNamespaces": [{
+        "binding": "lol", "id": "bruh", "previewId": "fun"
+      }],
+      
+      "routes": [
+        {
+          "pattern": "*",
+          "zoneName": "something",
+          "zoneId": "something"
+        }
+      ]
+    },
+  
+    "production": {
+      "name": "my awesome worker 2",
+      "route": "/api",
+      "variables": {
+        "some": "other variable",
+        "lovely": 2,
+        "cool": false
+      }
     }
   }
 }
