@@ -1,5 +1,13 @@
 # @darkflare/wjson
 
+## 0.4.1
+
+### Patch Changes
+
+- [#21](https://github.com/darkflarengine/wjson/pull/21) [`c2c08a2`](https://github.com/darkflarengine/wjson/commit/c2c08a2f25890f3f472ad5573bf0d1c613070814) Thanks [@unvented](https://github.com/unvented)! - chore: move repo to `darkflarengine` org
+
+  Move `wjson` to the `darkflarengine` organization, since it was mainly developed for [darkflare](https://github.com/azurydev/darkflare).
+
 ## 0.4.0
 
 ### Minor Changes
