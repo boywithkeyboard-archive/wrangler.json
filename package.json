@@ -43,7 +43,7 @@
     "@changesets/cli": "^2.24.0",
     "@types/js-yaml": "^4.0.5",
     "@types/minimist": "^1.2.2",
-    "@types/node": "^18.6.0",
+    "@types/node": "^18.6.1",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "chalk": "^5.0.1",
