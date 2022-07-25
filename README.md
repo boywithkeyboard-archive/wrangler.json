@@ -22,6 +22,7 @@ wjson
 ### Automatically Detectable Files
 
 - `wrangler.json`
+- `wrangler.jsonc`
 - `wrangler.js`
 - `wrangler.mjs`
 - `wrangler.cjs`
@@ -51,7 +52,7 @@ await generateConfig(config)
 
 ## Config Files
 
-`json`
+`json/jsonc`
 
 ```jsonc
 {

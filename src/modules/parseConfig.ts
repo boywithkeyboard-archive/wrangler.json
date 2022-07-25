@@ -3,6 +3,7 @@ import { join } from 'node:path'
 import chalk from 'chalk'
 import { build } from 'esbuild'
 import yaml from 'js-yaml'
+import stripJsonComments from 'strip-json-comments'
 import type { WranglerConfig } from '../type'
 
 const getStats = async (path: string) => {
@@ -76,6 +77,10 @@ export const parseConfig = async (path?: string) => {
         const c = await require(path)
   
         config = c
+      } else if (path.endsWith('.jsonc')) {
+        const c = await readFile(path, { encoding: 'utf-8' })
+
+        config = JSON.parse(stripJsonComments(c))
       } else if (path.endsWith('.js')) {
         await buildConfig(path)
   
@@ -112,6 +117,10 @@ export const parseConfig = async (path?: string) => {
         const c = await require(join(path, './wrangler.json'))
   
         config = c
+      } else if ((await getStats(join(path, './wrangler.jsonc')))?.isFile()) {
+        const c = await readFile(join(path, './wrangler.jsonc'), { encoding: 'utf-8' })
+
+        config = JSON.parse(stripJsonComments(c))
       } else if ((await getStats(join(path, './wrangler.js')))?.isFile()) {
         await buildConfig(join(path, './wrangler.js'))
   
