@@ -57,12 +57,12 @@ export const generateConfig = async (c: WranglerConfig) => {
         config += `name = "${c.env.development.name}"\n`
   
       if (c.env.development.route && typeof c.env.development.route === 'string')
-        config += `route = "${c.env.development.route}"`
+        config += `route = "${c.env.development.route}"\n`
       else if (typeof c.env.development.route === 'object')
-        config += `route = { pattern = "${c.env.development.route.pattern}"${c.env.development.route.zoneName ? `, zone_name = "${c.env.development.route.zoneName}"` : ''}${c.env.development.route.zoneId ? `, zone_id = "${c.env.development.route.zoneId}"` : ''} }`
+        config += `route = { pattern = "${c.env.development.route.pattern}"${c.env.development.route.zoneName ? `, zone_name = "${c.env.development.route.zoneName}"` : ''}${c.env.development.route.zoneId ? `, zone_id = "${c.env.development.route.zoneId}"` : ''} }\n`
   
       if (c.env.development.routes && typeof c.env.development.routes[0] === 'string') {
-        config += `routes = ${JSON.stringify(c.env.development.routes)}`
+        config += `routes = ${JSON.stringify(c.env.development.routes)}\n`
       } else if (c.env.development.routes && typeof c.env.development.routes[0] === 'object') {
         config += 'routes = ['
   
@@ -70,7 +70,7 @@ export const generateConfig = async (c: WranglerConfig) => {
           config += `\n  { pattern = "${r.pattern}"${r.zoneName ? `, zone_name = "${r.zoneName}"` : ''}${r.zoneId ? `, zone_id = "${r.zoneId}"` : ''} },`
         }
   
-        config += '\n]'
+        config += '\n]\n'
       }
   
       if (c.env.development.kvNamespaces) {
@@ -197,12 +197,12 @@ export const generateConfig = async (c: WranglerConfig) => {
         config += `  name = "${c.env.production.name}"\n`
   
       if (c.env.production.route && typeof c.env.production.route === 'string')
-        config += `  route = "${c.env.production.route}"`
+        config += `  route = "${c.env.production.route}"\n`
       else if (typeof c.env.production.route === 'object')
-        config += `  route = { pattern = "${c.env.production.route.pattern}"${c.env.production.route.zoneName ? `, zone_name = "${c.env.production.route.zoneName}"` : ''}${c.env.production.route.zoneId ? `, zone_id = "${c.env.production.route.zoneId}"` : ''} }`
+        config += `  route = { pattern = "${c.env.production.route.pattern}"${c.env.production.route.zoneName ? `, zone_name = "${c.env.production.route.zoneName}"` : ''}${c.env.production.route.zoneId ? `, zone_id = "${c.env.production.route.zoneId}"` : ''} }\n`
   
       if (c.env.production.routes && typeof c.env.production.routes[0] === 'string') {
-        config += `  routes = ${JSON.stringify(c.env.production.routes)}`
+        config += `  routes = ${JSON.stringify(c.env.production.routes)}\n`
       } else if (c.env.production.routes && typeof c.env.production.routes[0] === 'object') {
         config += '  routes = ['
   
@@ -210,7 +210,7 @@ export const generateConfig = async (c: WranglerConfig) => {
           config += `\n    { pattern = "${r.pattern}"${r.zoneName ? `, zone_name = "${r.zoneName}"` : ''}${r.zoneId ? `, zone_id = "${r.zoneId}"` : ''} },`
         }
   
-        config += '\n  ]'
+        config += '\n  ]\n'
       }
   
       if (c.env.production.kvNamespaces) {
