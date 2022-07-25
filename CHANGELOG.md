@@ -1,5 +1,17 @@
 # @darkflare/wjson
 
+## 0.4.2
+
+### Patch Changes
+
+- [#29](https://github.com/darkflarengine/wjson/pull/29) [`f106363`](https://github.com/darkflarengine/wjson/commit/f106363a5f3503611282f4de0761597ad6bd116f) Thanks [@unvented](https://github.com/unvented)! - test: fix config loaded via `extends` option
+
+* [#28](https://github.com/darkflarengine/wjson/pull/28) [`4528f58`](https://github.com/darkflarengine/wjson/commit/4528f58dc4f015e7c1dae74161c3239fd2e1c066) Thanks [@unvented](https://github.com/unvented)! - fix: spacing after `route` option in output file
+
+- [#26](https://github.com/darkflarengine/wjson/pull/26) [`56c9884`](https://github.com/darkflarengine/wjson/commit/56c98842205c7e233863c332b2046660f5ca6935) Thanks [@unvented](https://github.com/unvented)! - feat: add support for `.jsonc` files
+
+  Add support for `.jsonc` files, aka. json files with comments.
+
 ## 0.4.1
 
 ### Patch Changes
