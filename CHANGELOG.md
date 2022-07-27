@@ -1,5 +1,11 @@
 # @darkflare/wjson
 
+## 0.4.3
+
+### Patch Changes
+
+- [#33](https://github.com/darkflarengine/wjson/pull/33) [`5f25636`](https://github.com/darkflarengine/wjson/commit/5f2563606c80bb5043d2c6c3557111f61afbaa23) Thanks [@unvented](https://github.com/unvented)! - docs: add contact section to readme
+
 ## 0.4.2
 
 ### Patch Changes
