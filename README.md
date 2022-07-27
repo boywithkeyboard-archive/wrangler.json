@@ -98,3 +98,10 @@ development:
 - `vars` option was renamed to `variables`
 - `nodeComp` option was renamed to `nodeCompatibility`
 - any environment-related options must be specified under `development` *(global, default)*, `staging`, or `production`
+
+<hr>
+<div align='center'>
+  <h3>Chat with us</h3>
+  <a href='https://azury.dev/discord'><b>Join our Discord</b></a>
+</div>
+<hr>
