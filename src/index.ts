@@ -1,3 +1,3 @@
 export { define } from './modules/define'
-export { generateConfig } from './modules/generateConfig'
+export { generate } from './modules/generate'
 export { parseConfig } from './modules/parseConfig'
