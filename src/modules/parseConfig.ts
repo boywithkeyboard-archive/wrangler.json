@@ -4,7 +4,7 @@ import chalk from 'chalk'
 import { build } from 'esbuild'
 import yaml from 'js-yaml'
 import stripJsonComments from 'strip-json-comments'
-import type { WranglerConfig } from '../type'
+import type { WranglerConfiguration } from '../type'
 
 const getStats = async (path: string) => {
   try {
@@ -28,7 +28,7 @@ const buildConfig = async (path: string) => {
   })
 }
 
-const loadExtendedConfig = async (config: WranglerConfig): Promise<WranglerConfig> => {
+const loadExtendedConfig = async (config: WranglerConfiguration): Promise<WranglerConfiguration> => {
   try {
     if (!config.extends || (!config.extends.startsWith('http://') && !config.extends.startsWith('https://'))) return config
 
@@ -69,7 +69,7 @@ export const parseConfig = async (path?: string) => {
   if (!stats)
     return undefined
 
-  let config: WranglerConfig
+  let config: WranglerConfiguration
 
   try {
     if (stats.isFile()) {
@@ -106,7 +106,7 @@ export const parseConfig = async (path?: string) => {
   
         config = c.default
       } else if (path.endsWith('.yaml') || path.endsWith('.yml')) {
-        const c = yaml.load(await readFile(path, 'utf8')) as WranglerConfig
+        const c = yaml.load(await readFile(path, 'utf8')) as WranglerConfiguration
   
         config = c
       } else {
@@ -146,11 +146,11 @@ export const parseConfig = async (path?: string) => {
   
         config = c.default
       } else if ((await getStats(join(path, './wrangler.yml')))?.isFile()) {
-        const c = yaml.load(await readFile(join(path, './wrangler.yml'), 'utf8')) as WranglerConfig
+        const c = yaml.load(await readFile(join(path, './wrangler.yml'), 'utf8')) as WranglerConfiguration
   
         config = c
       } else if ((await getStats(join(path, './wrangler.yaml')))?.isFile()) {
-        const c = yaml.load(await readFile(join(path, './wrangler.yaml'), 'utf8')) as WranglerConfig
+        const c = yaml.load(await readFile(join(path, './wrangler.yaml'), 'utf8')) as WranglerConfiguration
   
         config = c
       } else {

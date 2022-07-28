@@ -1,7 +1,7 @@
 import chalk from 'chalk'
-import type { WranglerConfig } from '../type'
+import type { WranglerConfiguration } from '../type'
 
-export const generateConfig = async (c: WranglerConfig) => {
+export const generateConfig = async (c: WranglerConfiguration) => {
   try {
     let config = ''
   
