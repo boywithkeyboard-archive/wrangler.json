@@ -40,7 +40,7 @@ const loadExtendedConfig = async (config: WranglerConfiguration): Promise<Wrangl
 
     config.extends = undefined
 
-    const config2 = await parseConfig('wjson_internal:' + join(__dirname, '../.cache/config.json'))
+    const config2 = await parse('wjson_internal:' + join(__dirname, '../.cache/config.json'))
 
     if (!config2) return config
 
@@ -57,7 +57,7 @@ const loadExtendedConfig = async (config: WranglerConfiguration): Promise<Wrangl
   return config
 }
 
-export const parseConfig = async (path?: string) => {
+export const parse = async (path?: string) => {
   if (!path) path = process.cwd()
 
   const internalParsing = path.startsWith('wjson_internal:')
