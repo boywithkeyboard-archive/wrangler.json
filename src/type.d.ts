@@ -1,4 +1,4 @@
-export type WranglerEnv = {
+export type WranglerEnvironment = {
   name?: string
 
   route?:
@@ -26,7 +26,7 @@ export type WranglerEnv = {
   variables?: { [key: string]: any } // vars
 }
 
-export type WranglerConfig = {
+export type WranglerConfiguration = {
   extends?: string
   
   accountId: string
@@ -103,8 +103,8 @@ export type WranglerConfig = {
       variables?: { [key: string]: any } // vars
     }
   
-    staging?: WranglerEnv
-    production?: WranglerEnv
+    staging?: WranglerEnvironment
+    production?: WranglerEnvironment
   }
 
   build?: {
