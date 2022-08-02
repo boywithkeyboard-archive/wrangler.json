@@ -1,0 +1,6 @@
+extends: '@azury'
+
+rules:
+  'import/no-dynamic-require': 0
+  'import/no-commonjs': 0
+  'import/no-unused-modules': 0
