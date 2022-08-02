@@ -1,21 +1,12 @@
 {
+  "extends": "@azury/style/typescript",
   "compilerOptions": {
-    "target": "es2020",
     "module": "commonjs",
     "rootDir": "src",
     "declarationDir": "types",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "alwaysStrict": true,
-    "strict": true,
-    "noImplicitOverride": true,
-    "removeComments": true,
+    "noEmit": false,
     "declaration": true,
-    "emitDeclarationOnly": true,
-    "skipLibCheck": true,
-    "newLine": "crlf"
+    "emitDeclarationOnly": true
   },
   "exclude": [
     "test",
