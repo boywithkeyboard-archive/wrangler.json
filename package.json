@@ -22,7 +22,7 @@
   "bugs": "https://github.com/darkflarengine/wjson/issues",
   "homepage": "https://github.com/darkflarengine/wjson#readme",
   "dependencies": {
-    "esbuild": "^0.14.51"
+    "esbuild": "^0.14.53"
   },
   "devDependencies": {
     "@azury/eslint-config": "^1.0.3",
