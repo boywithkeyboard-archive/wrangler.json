@@ -1,5 +1,21 @@
 # @darkflare/wjson
 
+## 1.0.0
+
+### Major Changes
+
+- [#38](https://github.com/darkflarengine/wjson/pull/38) [`3836ac6`](https://github.com/darkflarengine/wjson/commit/3836ac6d3c89bbf923dca9b288f59f243ec65e0d) Thanks [@unvented](https://github.com/unvented)! - refactor!: rename `generateConfig` method to `generate`
+
+* [#36](https://github.com/darkflarengine/wjson/pull/36) [`0b712ca`](https://github.com/darkflarengine/wjson/commit/0b712ca138179c68bad3f1ceac533dea5bd1c316) Thanks [@unvented](https://github.com/unvented)! - refactor!: rename `defineConfig` method to `define`
+
+- [#39](https://github.com/darkflarengine/wjson/pull/39) [`23e31ce`](https://github.com/darkflarengine/wjson/commit/23e31ce587985a0d90bf0728f346f3236d69eb38) Thanks [@unvented](https://github.com/unvented)! - refactor!: rename `parseConfig` method to `parse`
+
+### Patch Changes
+
+- [#43](https://github.com/darkflarengine/wjson/pull/43) [`801de8c`](https://github.com/darkflarengine/wjson/commit/801de8c13c8c56941d0297d8108d95f77e3cc00d) Thanks [@unvented](https://github.com/unvented)! - refactor: migrate to azury's style guide
+
+* [`e242180`](https://github.com/darkflarengine/wjson/commit/e2421806cee7991438f44a7de4784ab99924b51e) Thanks [@unvented](https://github.com/unvented)! - refactor: replace `rimraf` with `@unvented/empty`
+
 ## 0.4.3
 
 ### Patch Changes
