@@ -34,7 +34,7 @@
     "@types/node": "^18.7.9",
     "@unvented/empty": "^1.0.3",
     "chalk": "^5.0.1",
-    "eslint": "^8.22.0",
+    "eslint": "^8.23.0",
     "js-yaml": "^4.1.0",
     "minimist": "^1.2.6",
     "strip-json-comments": "^5.0.0",
