@@ -1,6 +1,6 @@
 {
-  "name": "@darkflare/wjson",
-  "version": "0.4.3",
+  "name": "wrangler.json",
+  "version": "0.1.1",
   "description": "Configure Wrangler in the format of your choice.",
   "author": "Samuel Kopp <opensource@azury.dev> (https://azury.dev)",
   "bin": {
@@ -17,28 +17,28 @@
     "build": "empty dist types && tsc && npm run build:cli && npm run build:api",
     "test": "npm run build:cli && cd test && node ../dist/bin.js"
   },
-  "license": "Apache-2.0",
-  "repository": "darkflarengine/wjson",
-  "bugs": "https://github.com/darkflarengine/wjson/issues",
-  "homepage": "https://github.com/darkflarengine/wjson#readme",
+  "license": "MIT",
+  "repository": "unvented/wrangler.json",
+  "bugs": "https://github.com/unvented/wrangler.json/issues",
+  "homepage": "https://github.com/unvented/wrangler.json#readme",
   "dependencies": {
-    "esbuild": "^0.15.5"
+    "esbuild": "^0.15.10"
   },
   "devDependencies": {
-    "@azury/eslint-config": "^1.0.6",
+    "@azury/eslint-config": "^1.0.7",
     "@azury/style": "^1.0.0",
-    "@changesets/changelog-github": "^0.4.6",
-    "@changesets/cli": "^2.24.3",
+    "@changesets/changelog-github": "^0.4.7",
+    "@changesets/cli": "^2.25.0",
     "@types/js-yaml": "^4.0.5",
     "@types/minimist": "^1.2.2",
-    "@types/node": "^18.7.9",
-    "@unvented/empty": "^1.0.3",
-    "chalk": "^5.0.1",
-    "eslint": "^8.22.0",
+    "@types/node": "^18.8.0",
+    "@unvented/empty": "^1.0.4",
+    "eslint": "^8.24.0",
     "js-yaml": "^4.1.0",
     "minimist": "^1.2.6",
     "strip-json-comments": "^5.0.0",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.4",
+    "yoctocolors": "^1.0.0"
   },
   "engines": {
     "node": ">=18",
