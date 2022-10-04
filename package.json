@@ -32,7 +32,7 @@
     "@types/js-yaml": "^4.0.5",
     "@types/minimist": "^1.2.2",
     "@types/node": "^18.8.0",
-    "@unvented/empty": "^1.0.4",
+    "@unvented/empty": "^1.1.0",
     "eslint": "^8.24.0",
     "js-yaml": "^4.1.0",
     "minimist": "^1.2.6",
