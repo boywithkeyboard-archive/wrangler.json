@@ -31,7 +31,7 @@
     "@changesets/cli": "^2.25.0",
     "@types/js-yaml": "^4.0.5",
     "@types/minimist": "^1.2.2",
-    "@types/node": "^18.8.0",
+    "@types/node": "^18.8.2",
     "@unvented/empty": "^1.0.4",
     "eslint": "^8.24.0",
     "js-yaml": "^4.1.0",
